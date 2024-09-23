@@ -42,26 +42,32 @@
 //#define LCD_RST_GPIO_PIN                SYS_GPIO_PINx
 //#define LCD_RST_GPIO_CLK_ENABLE()       do{ __HAL_RCC_GPIOx_CLK_ENABLE(); }while(0)   /* 所在IO口时钟使能 */
 
-#define LCD_WR_GPIO_PORT                GPIOD
-#define LCD_WR_GPIO_PIN                 GPIO_PIN_5
-#define LCD_WR_GPIO_CLK_ENABLE()        do{ __HAL_RCC_GPIOD_CLK_ENABLE(); }while(0)   /* 所在IO口时钟使能 */
+#define LCD_WR_GPIO_PORT                GPIOC
+#define LCD_WR_GPIO_PIN                 GPIO_PIN_6
+#define LCD_WR_GPIO_CLK_ENABLE()        do{ __HAL_RCC_GPIOC_CLK_ENABLE(); }while(0)   /* 所在IO口时钟使能 */
 
-#define LCD_RD_GPIO_PORT                GPIOD
-#define LCD_RD_GPIO_PIN                 GPIO_PIN_4
-#define LCD_RD_GPIO_CLK_ENABLE()        do{ __HAL_RCC_GPIOD_CLK_ENABLE(); }while(0)   /* 所在IO口时钟使能 */
+#define LCD_RD_GPIO_PORT                GPIOC
+#define LCD_RD_GPIO_PIN                 GPIO_PIN_5
+#define LCD_RD_GPIO_CLK_ENABLE()        do{ __HAL_RCC_GPIOC_CLK_ENABLE(); }while(0)   /* 所在IO口时钟使能 */
 
-#define LCD_BL_GPIO_PORT                GPIOB
-#define LCD_BL_GPIO_PIN                 GPIO_PIN_0
-#define LCD_BL_GPIO_CLK_ENABLE()        do{ __HAL_RCC_GPIOB_CLK_ENABLE(); }while(0)   /* 背光所在IO口时钟使能 */
+#define LCD_BL_GPIO_PORT                GPIOD
+#define LCD_BL_GPIO_PIN                 GPIO_PIN_2
+#define LCD_BL_GPIO_CLK_ENABLE()        do{ __HAL_RCC_GPIOD_CLK_ENABLE(); }while(0)   /* 背光所在IO口时钟使能 */
 
 /* LCD_CS(需要根据LCD_FSMC_NEX设置正确的IO口) 和 LCD_RS(需要根据LCD_FSMC_AX设置正确的IO口) 引脚 定义 */
-#define LCD_CS_GPIO_PORT                GPIOG
-#define LCD_CS_GPIO_PIN                 GPIO_PIN_12
-#define LCD_CS_GPIO_CLK_ENABLE()        do{ __HAL_RCC_GPIOG_CLK_ENABLE(); }while(0)   /* 所在IO口时钟使能 */
+#define LCD_CS_GPIO_PORT                GPIOC
+#define LCD_CS_GPIO_PIN                 GPIO_PIN_4
+#define LCD_CS_GPIO_CLK_ENABLE()        do{ __HAL_RCC_GPIOC_CLK_ENABLE(); }while(0)   /* 所在IO口时钟使能 */
+//命令/数据 选择引脚 DC
+#define LCD_RS_GPIO_PORT                GPIOC
+#define LCD_RS_GPIO_PIN                 GPIO_PIN_7
+#define LCD_RS_GPIO_CLK_ENABLE()        do{ __HAL_RCC_GPIOC_CLK_ENABLE(); }while(0)   /* 所在IO口时钟使能 */
 
-#define LCD_RS_GPIO_PORT                GPIOG
-#define LCD_RS_GPIO_PIN                 GPIO_PIN_0
-#define LCD_RS_GPIO_CLK_ENABLE()        do{ __HAL_RCC_GPIOG_CLK_ENABLE(); }while(0)   /* 所在IO口时钟使能 */
+
+#define LCD_DATA_GPIO_PORT                GPIOB
+//数据线输入输出
+#define DATAOUT(x) 	LCD_DATA_GPIO_PORT->ODR=x; //数据输出
+#define DATAIN     	LCD_DATA_GPIO_PORT->IDR;   //数据输入	
 
 /* FSMC相关参数 定义 
  * 注意: 我们默认是通过FSMC块1来连接LCD, 块1有4个片选: FSMC_NE1~4
