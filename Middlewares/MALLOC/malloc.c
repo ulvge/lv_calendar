@@ -60,6 +60,7 @@ static MT_TYPE mem2mapbase[MEM2_ALLOC_TABLE_SIZE] __attribute__((section(".bss.A
 
 #endif
 
+#if SRAMBANK    == 2
 /* 内存管理参数 */
 const uint32_t memtblsize[SRAMBANK] = {MEM1_ALLOC_TABLE_SIZE, MEM2_ALLOC_TABLE_SIZE,
                                        };       /* 内存表大小 */
@@ -80,6 +81,27 @@ struct _m_mallco_dev mallco_dev =
     0, 0,                           /* 内存管理未就绪 */
 };
 
+#else
+/* 内存管理参数 */
+const uint32_t memtblsize[SRAMBANK] = {MEM1_ALLOC_TABLE_SIZE,
+                                       };       /* 内存表大小 */
+
+const uint32_t memblksize[SRAMBANK] = {MEM1_BLOCK_SIZE,
+                                      };        /* 内存分块大小 */
+
+const uint32_t memsize[SRAMBANK] = {MEM1_MAX_SIZE,
+                                   };           /* 内存总大小 */
+
+/* 内存管理控制器 */
+struct _m_mallco_dev mallco_dev =
+{
+    my_mem_init,                    /* 内存初始化 */
+    my_mem_perused,                 /* 内存使用率 */
+    mem1base,             /* 内存池 */
+    mem1mapbase,       /* 内存管理状态表 */
+    0,                           /* 内存管理未就绪 */
+};
+#endif
 /**
  * @brief       复制内存
  * @param       *des : 目的地址

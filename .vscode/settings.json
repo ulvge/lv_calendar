@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "sys.h": "c",
+        "malloc.h": "c",
+        "lvgl_demo.h": "c"
+    }
+}

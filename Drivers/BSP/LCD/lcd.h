@@ -105,8 +105,8 @@ extern uint32_t  g_back_color;      /* 背景颜色.默认为白色 */
 
 /* LCD背光控制 */
 #define LCD_BL(x)   do{ x ? \
-                      HAL_GPIO_WritePin(LCD_BL_GPIO_PORT, LCD_BL_GPIO_PIN, GPIO_PIN_SET) : \
-                      HAL_GPIO_WritePin(LCD_BL_GPIO_PORT, LCD_BL_GPIO_PIN, GPIO_PIN_RESET); \
+                      HAL_GPIO_WritePin(LCD_BL_GPIO_PORT, LCD_BL_GPIO_PIN, GPIO_PIN_RESET) : \
+                      HAL_GPIO_WritePin(LCD_BL_GPIO_PORT, LCD_BL_GPIO_PIN, GPIO_PIN_SET); \
                      }while(0)
 
 /* LCD地址结构体 */
@@ -157,7 +157,7 @@ typedef struct
 #define D2U_L2R         6           /* 从下到上,从左到右 */
 #define D2U_R2L         7           /* 从下到上,从右到左 */
 
-#define DFT_SCAN_DIR    L2R_U2D     /* 默认的扫描方向 */
+#define DFT_SCAN_DIR    D2U_L2R     /* 默认的扫描方向 */
 
 /* 常用画笔颜色 */
 #define WHITE           0xFFFF      /* 白色 */
@@ -185,8 +185,8 @@ typedef struct
 /* SSD1963相关配置参数(一般不用改) */
 
 /* LCD分辨率设置 */ 
-#define SSD_HOR_RESOLUTION      800     /* LCD水平分辨率 */ 
-#define SSD_VER_RESOLUTION      480     /* LCD垂直分辨率 */ 
+#define SSD_HOR_RESOLUTION      320     /* LCD水平分辨率 */ 
+#define SSD_VER_RESOLUTION      240     /* LCD垂直分辨率 */ 
 
 /* LCD驱动参数设置 */ 
 #define SSD_HOR_PULSE_WIDTH     1       /* 水平脉宽 */ 
@@ -203,6 +203,11 @@ typedef struct
 #define SSD_VT          (SSD_VER_RESOLUTION + SSD_VER_BACK_PORCH + SSD_VER_FRONT_PORCH)
 #define SSD_VPS         (SSD_VER_BACK_PORCH)
    
+
+/******************************* 定义 ILI934 常用命令 ********************************/
+#define      CMD_SetCoordinateX		 		    0x2A	     //设置X坐标
+#define      CMD_SetCoordinateY		 		    0x2B	     //设置Y坐标
+#define      CMD_SetPixel		 		          0x2C	     //填充像素
 /******************************************************************************************/
 /* 函数申明 */
 

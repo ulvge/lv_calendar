@@ -67,7 +67,7 @@ void lcd_wr_data(volatile uint16_t data)
 }
 
 /**
- * @brief       LCD写寄存器编号/
+ * @brief       LCD写 CMD
  * @param       regno: 寄存器编号
  * @retval      无
  */
@@ -147,7 +147,8 @@ static void lcd_opt_delay(uint32_t i)
  */
 void lcd_write_ram_prepare(void)
 {
-    LCD->LCD_REG = lcddev.wramcmd;
+    //LCD->LCD_REG = lcddev.wramcmd;
+    lcd_wr_regno(CMD_SetPixel);
 }
 
 /**
@@ -271,9 +272,13 @@ void lcd_set_cursor(uint16_t x, uint16_t y)
     else    /* 9341/5310/7789 等 设置坐标 */
     {
         lcd_wr_regno(lcddev.setxcmd);
+        lcd_wr_data(0);
+        lcd_wr_data(0);
         lcd_wr_data(x >> 8);
         lcd_wr_data(x & 0XFF);
         lcd_wr_regno(lcddev.setycmd);
+        lcd_wr_data(0);
+        lcd_wr_data(0);
         lcd_wr_data(y >> 8);
         lcd_wr_data(y & 0XFF);
     }
@@ -444,7 +449,7 @@ void lcd_scan_dir(uint8_t dir)
     }
 
 /**
- * @brief       画点
+ * @brief       画点 ILI9341_SetPointPixel
  * @param       x,y: 坐标
  * @param       color: 点的颜色(32位颜色,方便兼容LTDC)
  * @retval      无
@@ -455,6 +460,7 @@ void lcd_draw_point(uint16_t x, uint16_t y, uint32_t color)
     lcd_write_ram_prepare();    /* 开始写入GRAM */
     //LCD->LCD_RAM = color;
     lcd_wr_data(color);
+    //lcd_write_reg(CMD_SetPixel, color);
 }
 
 /**
@@ -1022,6 +1028,7 @@ void lcd_fill_circle(uint16_t x, uint16_t y, uint16_t r, uint16_t color)
  * @param       chr  : 要显示的字符:" "--->"~"
  * @param       size : 字体大小 12/16/24/32
  * @param       mode : 叠加方式(1); 非叠加方式(0);
+ * @param       color : color;
  * @retval      无
  */
 void lcd_show_char(uint16_t x, uint16_t y, char chr, uint8_t size, uint8_t mode, uint16_t color)

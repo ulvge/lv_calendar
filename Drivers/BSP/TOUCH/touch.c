@@ -496,7 +496,7 @@ void tp_adjust(void)
         delay_ms(10);
         outtime++;
 
-        if (outtime > 1000)
+        if (outtime > 100)
         {
             tp_get_adjust_data();
             break;

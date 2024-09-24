@@ -53,13 +53,13 @@
  ***********************************************************************************/
 
 /* 0: 使用内置的 `lv_mem_alloc()` 和 `lv_mem_free()`*/
-#define LV_MEM_CUSTOM                       0
+#define LV_MEM_CUSTOM                       1
 #if LV_MEM_CUSTOM == 0
     /* `lv_mem_alloc()`可获得的内存大小(以字节为单位)(>= 2kB) */
-    #define LV_MEM_SIZE                     (200U * 1024U)          /*[字节]*/
+    #define LV_MEM_SIZE                     (20U * 1024U)          /*[字节]*/
 
     /* 为内存池设置一个地址，而不是将其作为普通数组分配。也可以在外部SRAM中。 */
-    #define LV_MEM_ADR                      0x68000000     /*0: 未使用*/
+    #define LV_MEM_ADR                      0 // (0x20000000 + (64 * 1024 - LV_MEM_SIZE))      /*0: 未使用*/
     /* 给内存分配器而不是地址，它将被调用来获得LVGL的内存池。例如my_malloc */
     #if LV_MEM_ADR == 0
         //#define LV_MEM_POOL_INCLUDE your_alloc_library  /* 如果使用外部分配器，取消注释 */
@@ -78,7 +78,7 @@
 #define LV_MEM_BUF_MAX_NUM                  16
 
 /* 使用标准的 `memcpy` 和 `memset` 代替LVGL自己的函数。(可能更快，也可能不会更快) */
-#define LV_MEMCPY_MEMSET_STD                0
+#define LV_MEMCPY_MEMSET_STD                1
 
 
 

@@ -40,9 +40,9 @@ int main(void)
     lcd_init();                         /* 初始化LCD */
     key_init();                         /* 初始化按键 */
     //sram_init();                        /* SRAM初始化 */
-    tp_dev.init();                      /* 触摸屏初始化 */
+    //tp_dev.init();                      /* 触摸屏初始化 */
     my_mem_init(SRAMIN);                /* 初始化内部SRAM内存池 */
-    my_mem_init(SRAMEX);                /* 初始化外部SRAM内存池 */
+    //my_mem_init(SRAMEX);                /* 初始化外部SRAM内存池 */
     
     lvgl_demo();                        /* 运行FreeRTOS例程 */
 }

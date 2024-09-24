@@ -31,7 +31,7 @@
 #define SRAMIN      0       /* 内部SRAM, 共64KB */
 #define SRAMEX      1       /* SRAMEX内存池, 外扩SRAM, 共1024KB */
 
-#define SRAMBANK    2       /* 定义支持的SRAM块数. */
+#define SRAMBANK    1       /* 定义支持的SRAM块数. */
 
 
 /* 定义内存管理表类型,当外扩SDRAM的时候，必须使用uint32_t类型，否则可以定义成uint16_t，以节省内存占用 */

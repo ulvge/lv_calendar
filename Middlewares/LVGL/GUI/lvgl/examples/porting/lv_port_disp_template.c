@@ -22,8 +22,8 @@
 #include "./MALLOC/malloc.h"
 #endif
 
-#define MY_DISP_HOR_RES (800)   /* 屏幕宽度 */
-#define MY_DISP_VER_RES (480)   /* 屏幕高度 */
+#define MY_DISP_HOR_RES (320)   /* 屏幕宽度 */
+#define MY_DISP_VER_RES (240)   /* 屏幕高度 */
 
 /**********************
  *      TYPEDEFS

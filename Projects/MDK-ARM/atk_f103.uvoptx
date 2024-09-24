@@ -162,9 +162,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>129</LineNumber>
+          <LineNumber>1070</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134316424</Address>
+          <Address>134317296</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -173,7 +173,71 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>E:\3Proj\10 NS208\閲庣伀\LVGL\lvgl-code-repository\鎴樿埌V4 STM32F103寮€鍙戞澘\4锛孡VGL渚嬬▼\LVGL渚嬬▼25 lv_calendar(鏃ュ巻)\Drivers\BSP\LCD\lcd.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\atk_f103\../../Drivers/BSP/LCD/lcd.c\129</Expression>
+          <Expression>\\atk_f103\../../Drivers/BSP/LCD/lcd.c\1070</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>1077</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134317324</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>E:\3Proj\10 NS208\閲庣伀\LVGL\lvgl-code-repository\鎴樿埌V4 STM32F103寮€鍙戞澘\4锛孡VGL渚嬬▼\LVGL渚嬬▼25 lv_calendar(鏃ュ巻)\Drivers\BSP\LCD\lcd.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\atk_f103\../../Drivers/BSP/LCD/lcd.c\1077</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>1093</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134317268</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>E:\3Proj\10 NS208\閲庣伀\LVGL\lvgl-code-repository\鎴樿埌V4 STM32F103寮€鍙戞澘\4锛孡VGL渚嬬▼\LVGL渚嬬▼25 lv_calendar(鏃ュ巻)\Drivers\BSP\LCD\lcd.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\atk_f103\../../Drivers/BSP/LCD/lcd.c\1093</Expression>
+        </Bp>
+        <Bp>
+          <Number>3</Number>
+          <Type>0</Type>
+          <LineNumber>455</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134305706</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>E:\3Proj\10 NS208\閲庣伀\LVGL\lvgl-code-repository\鎴樿埌V4 STM32F103寮€鍙戞澘\4锛孡VGL渚嬬▼\LVGL渚嬬▼25 lv_calendar(鏃ュ巻)\Drivers\BSP\LCD\lcd.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\atk_f103\../../Drivers/BSP/LCD/lcd.c\455</Expression>
+        </Bp>
+        <Bp>
+          <Number>4</Number>
+          <Type>0</Type>
+          <LineNumber>274</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134316684</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>E:\3Proj\10 NS208\閲庣伀\LVGL\lvgl-code-repository\鎴樿埌V4 STM32F103寮€鍙戞澘\4锛孡VGL渚嬬▼\LVGL渚嬬▼25 lv_calendar(鏃ュ巻)\Drivers\BSP\LCD\lcd.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\atk_f103\../../Drivers/BSP/LCD/lcd.c\274</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -181,6 +245,11 @@
           <count>0</count>
           <WinNumber>1</WinNumber>
           <ItemText>lcddev</ItemText>
+        </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>outtime,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>
@@ -239,6 +308,10 @@
           <WinId>35902</WinId>
         </Entry>
         <Entry>
+          <Name>System Viewer\GPIOD</Name>
+          <WinId>35901</WinId>
+        </Entry>
+        <Entry>
           <Name>System Viewer\RCC</Name>
           <WinId>35903</WinId>
         </Entry>
@@ -255,7 +328,7 @@
 
   <Group>
     <GroupName>Startup</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -763,7 +836,7 @@
 
   <Group>
     <GroupName>Middlewares/MALLOC</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -783,7 +856,7 @@
 
   <Group>
     <GroupName>Middlewares/FreeRTOS_CORE</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -2811,7 +2884,7 @@
 
   <Group>
     <GroupName>Middlewares/LVGL/GUI_APP</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
