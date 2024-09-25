@@ -484,10 +484,10 @@ void lcd_display_dir(uint8_t dir)
 {
     lcddev.dir = dir;   /* 竖屏/横屏 */
 
-    if (dir == 0)       /* 竖屏 */
+    if (dir == LCD_DISP_DIR_HORIZONTAL)       /* 横屏*/
     {
-        lcddev.width = 240;
-        lcddev.height = 320;
+        lcddev.width = SSD_HOR_RESOLUTION;
+        lcddev.height = SSD_VER_RESOLUTION;
 
         // if (lcddev.id == 0x5510)
         // {
@@ -518,10 +518,10 @@ void lcd_display_dir(uint8_t dir)
         //     lcddev.height = 480;
         // }         
     }   /*dir = 0*/
-    else                /* 横屏 */
+    else                /* 竖屏 */
     {
-        lcddev.width = 320;         /* 默认宽度 */
-        lcddev.height = 240;        /* 默认高度 */
+        lcddev.width = SSD_VER_RESOLUTION;         /* 默认宽度 */
+        lcddev.height = SSD_HOR_RESOLUTION;        /* 默认高度 */
 
         // if (lcddev.id == 0x5510)
         // {
@@ -784,7 +784,7 @@ void lcd_init(void)
         lcd_ssd_backlight_set(100); /* 背光设置为最亮 */
     }
 
-    lcd_display_dir(LCD_DISP_DIR_HORIZONTAL); /* 默认为横屏 */
+    lcd_display_dir(LCD_DISP_DIR_HORIZONTAL);
     LCD_BL(1);          /* 点亮背光 */
     lcd_clear(WHITE);
 }

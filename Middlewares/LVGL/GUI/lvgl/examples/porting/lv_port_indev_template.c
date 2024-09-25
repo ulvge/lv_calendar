@@ -205,7 +205,11 @@ void lv_port_indev_init(void)
 static void touchpad_init(void)
 {
     /*Your code comes here*/
-    tp_dev.init();
+    
+    lcd_show_string(2, 2, 220, 100, 16, "CCEMIND12345abcdefg", GREEN); /* 显示提示信息 */
+    tp_dev.init(); // tp_init
+    
+    lcd_show_string(2, 2, 220, 100, 16, "DDEMIND12345abcdefg", GREEN); /* 显示提示信息 */
     
     /* 电阻屏坐标矫正 */
     if (key_scan(0) == KEY0_PRES)           /* KEY0按下,则执行校准程序 */

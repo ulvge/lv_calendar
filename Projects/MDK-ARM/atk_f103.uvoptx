@@ -158,7 +158,40 @@
           <Name>UL2CM3(-S0 -C0 -P0 ) -FN1 -FC1000 -FD20000000 -FF0STM32F10x_512 -FL080000 -FS08000000 -FP0($$Device:STM32F103ZE$Flash\STM32F10x_512.FLM)</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint/>
+      <Breakpoint>
+        <Bp>
+          <Number>0</Number>
+          <Type>0</Type>
+          <LineNumber>210</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134441460</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>E:\3Proj\10 NS208\閲庣伀\LVGL\lvgl-code-repository\鎴樿埌V4 STM32F103寮€鍙戞澘\4锛孡VGL渚嬬▼\LVGL渚嬬▼25 lv_calendar(鏃ュ巻)\Middlewares\LVGL\GUI\lvgl\examples\porting\lv_port_indev_template.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\atk_f103\../../Middlewares/LVGL/GUI/lvgl/examples/porting/lv_port_indev_template.c\210</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>567</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134443622</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>E:\3Proj\10 NS208\閲庣伀\LVGL\lvgl-code-repository\鎴樿埌V4 STM32F103寮€鍙戞澘\4锛孡VGL渚嬬▼\LVGL渚嬬▼25 lv_calendar(鏃ュ巻)\Drivers\BSP\TOUCH\touch.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\atk_f103\../../Drivers/BSP/TOUCH/touch.c\567</Expression>
+        </Bp>
+      </Breakpoint>
       <WatchWindow1>
         <Ww>
           <count>0</count>
@@ -184,6 +217,11 @@
           <count>4</count>
           <WinNumber>1</WinNumber>
           <ItemText>temp</ItemText>
+        </Ww>
+        <Ww>
+          <count>5</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>lcddev.height</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>

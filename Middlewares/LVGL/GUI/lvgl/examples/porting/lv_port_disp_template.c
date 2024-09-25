@@ -160,7 +160,6 @@ void lv_port_disp_init(void)
      * 注意，你可以在 lv_conf.h 中使能 LVGL 内置支持的 GPUs
      * 但如果你有不同的 GPU，那么可以使用这个回调函数。 */
     //disp_drv.gpu_fill_cb = gpu_fill;
-
     /* 注册显示设备 */
     lv_disp_drv_register(&disp_drv);
 }
