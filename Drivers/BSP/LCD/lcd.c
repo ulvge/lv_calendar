@@ -272,13 +272,9 @@ void lcd_set_cursor(uint16_t x, uint16_t y)
     else    /* 9341/5310/7789 等 设置坐标 */
     {
         lcd_wr_regno(lcddev.setxcmd);
-        lcd_wr_data(0);
-        lcd_wr_data(0);
         lcd_wr_data(x >> 8);
         lcd_wr_data(x & 0XFF);
         lcd_wr_regno(lcddev.setycmd);
-        lcd_wr_data(0);
-        lcd_wr_data(0);
         lcd_wr_data(y >> 8);
         lcd_wr_data(y & 0XFF);
     }
@@ -493,68 +489,68 @@ void lcd_display_dir(uint8_t dir)
         lcddev.width = 240;
         lcddev.height = 320;
 
-        if (lcddev.id == 0x5510)
+        // if (lcddev.id == 0x5510)
+        // {
+        //     lcddev.wramcmd = 0X2C00;
+        //     lcddev.setxcmd = 0X2A00;
+        //     lcddev.setycmd = 0X2B00;
+        //     lcddev.width = 480;
+        //     lcddev.height = 800;
+        // }
+        // else if (lcddev.id == 0X1963)
+        // {
+        //     lcddev.wramcmd = 0X2C;  /* 设置写入GRAM的指令 */
+        //     lcddev.setxcmd = 0X2B;  /* 设置写X坐标指令 */
+        //     lcddev.setycmd = 0X2A;  /* 设置写Y坐标指令 */
+        //     lcddev.width = 480;     /* 设置宽度480 */
+        //     lcddev.height = 800;    /* 设置高度800 */
+        // }
+        //else   /* 其他IC, 包括: 9341 / 5310 / 7789等IC */
         {
-            lcddev.wramcmd = 0X2C00;
-            lcddev.setxcmd = 0X2A00;
-            lcddev.setycmd = 0X2B00;
-            lcddev.width = 480;
-            lcddev.height = 800;
-        }
-        else if (lcddev.id == 0X1963)
-        {
-            lcddev.wramcmd = 0X2C;  /* 设置写入GRAM的指令 */
-            lcddev.setxcmd = 0X2B;  /* 设置写X坐标指令 */
-            lcddev.setycmd = 0X2A;  /* 设置写Y坐标指令 */
-            lcddev.width = 480;     /* 设置宽度480 */
-            lcddev.height = 800;    /* 设置高度800 */
-        }
-        else   /* 其他IC, 包括: 9341 / 5310 / 7789等IC */
-        {
-            lcddev.wramcmd = 0X2C;
-            lcddev.setxcmd = 0X2A;
-            lcddev.setycmd = 0X2B;
+            lcddev.wramcmd = CMD_SetPixel;
+            lcddev.setxcmd = CMD_SetCoordinateX;
+            lcddev.setycmd = CMD_SetCoordinateY;
         }
 
-        if (lcddev.id == 0X5310)    /* 如果是5310 则表示是 320*480分辨率 */
-        {
-            lcddev.width = 320;
-            lcddev.height = 480;
-        }         
+        // if (lcddev.id == 0X5310)    /* 如果是5310 则表示是 320*480分辨率 */
+        // {
+        //     lcddev.width = 320;
+        //     lcddev.height = 480;
+        // }         
     }   /*dir = 0*/
     else                /* 横屏 */
     {
         lcddev.width = 320;         /* 默认宽度 */
         lcddev.height = 240;        /* 默认高度 */
 
-        if (lcddev.id == 0x5510)
+        // if (lcddev.id == 0x5510)
+        // {
+        //     lcddev.wramcmd = 0X2C00;
+        //     lcddev.setxcmd = 0X2A00;
+        //     lcddev.setycmd = 0X2B00;
+        //     lcddev.width = 800;
+        //     lcddev.height = 480;
+        // }
+        // else if (lcddev.id == 0X1963)
+        // {
+        //     lcddev.wramcmd = 0X2C;  /* 设置写入GRAM的指令 */
+        //     lcddev.setxcmd = 0X2A;  /* 设置写X坐标指令 */
+        //     lcddev.setycmd = 0X2B;  /* 设置写Y坐标指令 */
+        //     lcddev.width = 800;     /* 设置宽度800 */
+        //     lcddev.height = 480;    /* 设置高度480 */
+        // }
+        // else   /* 其他IC, 包括: 9341 / 5310 / 7789等IC */
         {
-            lcddev.wramcmd = 0X2C00;
-            lcddev.setxcmd = 0X2A00;
-            lcddev.setycmd = 0X2B00;
-            lcddev.width = 800;
-            lcddev.height = 480;
-        }
-        else if (lcddev.id == 0X1963)
-        {
-            lcddev.wramcmd = 0X2C;  /* 设置写入GRAM的指令 */
-            lcddev.setxcmd = 0X2A;  /* 设置写X坐标指令 */
-            lcddev.setycmd = 0X2B;  /* 设置写Y坐标指令 */
-            lcddev.width = 800;     /* 设置宽度800 */
-            lcddev.height = 480;    /* 设置高度480 */
-        }
-        else   /* 其他IC, 包括: 9341 / 5310 / 7789等IC */
-        {
-            lcddev.wramcmd = 0X2C;
-            lcddev.setxcmd = 0X2A;
-            lcddev.setycmd = 0X2B;
+            lcddev.wramcmd = CMD_SetPixel;
+            lcddev.setxcmd = CMD_SetCoordinateX;
+            lcddev.setycmd = CMD_SetCoordinateY;
         }
 
-        if (lcddev.id == 0X5310)    /* 如果是5310 则表示是 320*480分辨率 */
-        {
-            lcddev.width = 480;
-            lcddev.height = 320;
-        }
+        // if (lcddev.id == 0X5310)    /* 如果是5310 则表示是 320*480分辨率 */
+        // {
+        //     lcddev.width = 480;
+        //     lcddev.height = 320;
+        // }
     }
 
     lcd_scan_dir(DFT_SCAN_DIR);     /* 默认扫描方向 */
@@ -695,7 +691,10 @@ void lcd_init(void)
 
 
     delay_ms(50);
-
+    
+#if LV_USE_LOG
+    lv_log_register_print_cb(printf);
+#endif
     /* 尝试9341 ID的读取 */
     lcd_wr_regno(0XD3);
     lcddev.id = lcd_rd_data();  /* dummy read */
@@ -785,7 +784,7 @@ void lcd_init(void)
         lcd_ssd_backlight_set(100); /* 背光设置为最亮 */
     }
 
-    lcd_display_dir(0); /* 默认为竖屏 */
+    lcd_display_dir(LCD_DISP_DIR_HORIZONTAL); /* 默认为横屏 */
     LCD_BL(1);          /* 点亮背光 */
     lcd_clear(WHITE);
 }
@@ -1065,7 +1064,7 @@ void lcd_show_char(uint16_t x, uint16_t y, char chr, uint8_t size, uint8_t mode,
 
     for (t = 0; t < csize; t++)
     {
-        temp = pfont[t];    /* 获取字符的点阵数据 */
+        temp = pfont[t];    /* 获取字符的点阵数据*/
 
         for (t1 = 0; t1 < 8; t1++)   /* 一个字节8个点 */
         {
@@ -1081,15 +1080,17 @@ void lcd_show_char(uint16_t x, uint16_t y, char chr, uint8_t size, uint8_t mode,
             temp <<= 1; /* 移位, 以便获取下一个位的状态 */
             y++;
 
-            if (y >= lcddev.height)return;  /* 超区域了 */
+            if (y >= lcddev.height){
+                return;  /* 超区域了 */
+            }
 
-            if ((y - y0) == size)   /* 显示完一列了? */
-            {
+            if ((y - y0) == size) {  /* 显示完一列了? */
                 y = y0; /* y坐标复位 */
                 x++;    /* x坐标递增 */
 
-                if (x >= lcddev.width)return;   /* x坐标超区域了 */
-
+                if (x >= lcddev.width){
+                    return;   /* x坐标超区域了 */
+                }
                 break;
             }
         }

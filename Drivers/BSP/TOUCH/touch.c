@@ -6,7 +6,7 @@
  * @date        2020-04-25
  * @brief       触摸屏 驱动代码
  *   @note      支持电阻/电容式触摸屏
- *              触摸屏驱动（支持ADS7843/7846/UH7843/7846/XPT2046/TSC2046/GT9147/GT9271/FT5206等）代码
+ *              触摸屏驱动（支持ADS7843/7846/UH7843/7846/XPT2046/ TSC2046 /GT9147/GT9271/FT5206等）代码
  *
  * @license     Copyright (c) 2020-2032, 广州市星翼电子科技有限公司
  ****************************************************************************************************
@@ -414,8 +414,10 @@ void tp_adjust(void)
     cnt = 0;
 
     lcd_clear(WHITE);       /* 清屏 */
-    lcd_show_string(40, 40, 160, 100, 16, TP_REMIND_MSG_TBL, RED); /* 显示提示信息 */
+    lcd_show_string(5, 5, 220, 100, 16, "123TP_REMIND12345abcdefg", RED); /* 显示提示信息 */
+    lcd_show_string(10, 10, SSD_VER_RESOLUTION - 10, SSD_HOR_RESOLUTION - 10, 16, TP_REMIND_MSG_TBL, RED); /* 显示提示信息 */
     tp_draw_touch_point(20, 20, RED);   /* 画点1 */
+    delay_ms(100);
     tp_dev.sta = 0;         /* 消除触发信号 */
 
     while (1)               /* 如果连续10秒钟没有按下,则自动退出 */
@@ -496,7 +498,7 @@ void tp_adjust(void)
         delay_ms(10);
         outtime++;
 
-        if (outtime > 100)
+        if (outtime > 2000)
         {
             tp_get_adjust_data();
             break;
@@ -570,7 +572,6 @@ uint8_t tp_init(void)
         }
         else                    /* 未校准? */
         {
-            lcd_clear(WHITE);   /* 清屏 */
             tp_adjust();        /* 屏幕校准 */
             tp_save_adjust_data();
         }

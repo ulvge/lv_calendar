@@ -207,7 +207,7 @@
  *-----------*/
 
 /* 启用日志模块 */
-#define LV_USE_LOG                          0
+#define LV_USE_LOG                          1
 #if LV_USE_LOG
 
     /*应该添加多重要的日志:
@@ -217,11 +217,11 @@
     *LV_LOG_LEVEL_ERROR       只有在系统可能出现故障时才会出现关键问题
     *LV_LOG_LEVEL_USER        仅用户自己添加的日志
     *LV_LOG_LEVEL_NONE        不要记录任何内容*/
-    #define LV_LOG_LEVEL LV_LOG_LEVEL_WARN
+    #define LV_LOG_LEVEL        LV_LOG_LEVEL_INFO
 
     /*1: 使用'printf'打印日志;
      *0: 用户需要用' lv_log_register_print_cb() '注册回调函数 */
-    #define LV_LOG_PRINTF                   0
+    #define LV_LOG_PRINTF                   1
 
     /* 在产生大量日志的模块中启用/禁用LV_LOG_TRACE */
     #define LV_LOG_TRACE_MEM                1

@@ -29,11 +29,14 @@
 
 /* 内存池(64字节对齐) */
 static __align(64) uint8_t mem1base[MEM1_MAX_SIZE];                                     /* 内部SRAM内存池 */
+#if SRAMBANK    == 2
 static __align(64) uint8_t mem2base[MEM2_MAX_SIZE] __attribute__((at(SRAM_BASE_ADDR))); /* 外扩SRAM内存池 */
-
+#endif
 /* 内存管理表 */
-static MT_TYPE mem1mapbase[MEM1_ALLOC_TABLE_SIZE];                                                      /* 内部SRAM内存池MAP */
+static MT_TYPE mem1mapbase[MEM1_ALLOC_TABLE_SIZE];         
+#if SRAMBANK    == 2                                             /* 内部SRAM内存池MAP */
 static MT_TYPE mem2mapbase[MEM2_ALLOC_TABLE_SIZE] __attribute__((at(SRAM_BASE_ADDR + MEM2_MAX_SIZE)));  /* 外扩SRAM内存池MAP */
+#endif
 
 #else   /* 是AC6编译器，使用AC6编译器时 */
 

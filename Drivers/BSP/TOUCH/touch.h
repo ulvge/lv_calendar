@@ -36,25 +36,25 @@
 /******************************************************************************************/
 /* 电阻触摸屏驱动IC T_PEN/T_CS/T_MISO/T_MOSI/T_SCK 引脚 定义 */
 
-#define T_PEN_GPIO_PORT                 GPIOF
-#define T_PEN_GPIO_PIN                  GPIO_PIN_10
-#define T_PEN_GPIO_CLK_ENABLE()         do{ __HAL_RCC_GPIOF_CLK_ENABLE(); }while(0)   /* 所在IO口时钟使能 */
+#define T_PEN_GPIO_PORT                 GPIOC
+#define T_PEN_GPIO_PIN                  GPIO_PIN_12
+#define T_PEN_GPIO_CLK_ENABLE()         do{ __HAL_RCC_GPIOC_CLK_ENABLE(); }while(0)   /* 所在IO口时钟使能 */
 
-#define T_CS_GPIO_PORT                  GPIOF
-#define T_CS_GPIO_PIN                   GPIO_PIN_11
-#define T_CS_GPIO_CLK_ENABLE()          do{ __HAL_RCC_GPIOF_CLK_ENABLE(); }while(0)   /* 所在IO口时钟使能 */
+#define T_CS_GPIO_PORT                  GPIOC
+#define T_CS_GPIO_PIN                   GPIO_PIN_9
+#define T_CS_GPIO_CLK_ENABLE()          do{ __HAL_RCC_GPIOC_CLK_ENABLE(); }while(0)   /* 所在IO口时钟使能 */
 
-#define T_MISO_GPIO_PORT                GPIOB
-#define T_MISO_GPIO_PIN                 GPIO_PIN_2
-#define T_MISO_GPIO_CLK_ENABLE()        do{ __HAL_RCC_GPIOB_CLK_ENABLE(); }while(0)   /* 所在IO口时钟使能 */
+#define T_MISO_GPIO_PORT                GPIOC
+#define T_MISO_GPIO_PIN                 GPIO_PIN_11
+#define T_MISO_GPIO_CLK_ENABLE()        do{ __HAL_RCC_GPIOC_CLK_ENABLE(); }while(0)   /* 所在IO口时钟使能 */
 
-#define T_MOSI_GPIO_PORT                GPIOF
-#define T_MOSI_GPIO_PIN                 GPIO_PIN_9
-#define T_MOSI_GPIO_CLK_ENABLE()        do{ __HAL_RCC_GPIOF_CLK_ENABLE(); }while(0)   /* 所在IO口时钟使能 */
+#define T_MOSI_GPIO_PORT                GPIOC
+#define T_MOSI_GPIO_PIN                 GPIO_PIN_10
+#define T_MOSI_GPIO_CLK_ENABLE()        do{ __HAL_RCC_GPIOC_CLK_ENABLE(); }while(0)   /* 所在IO口时钟使能 */
 
-#define T_CLK_GPIO_PORT                 GPIOB
-#define T_CLK_GPIO_PIN                  GPIO_PIN_1
-#define T_CLK_GPIO_CLK_ENABLE()         do{ __HAL_RCC_GPIOB_CLK_ENABLE(); }while(0)   /* 所在IO口时钟使能 */
+#define T_CLK_GPIO_PORT                 GPIOC
+#define T_CLK_GPIO_PIN                  GPIO_PIN_8
+#define T_CLK_GPIO_CLK_ENABLE()         do{ __HAL_RCC_GPIOC_CLK_ENABLE(); }while(0)   /* 所在IO口时钟使能 */
 
 /******************************************************************************************/
 

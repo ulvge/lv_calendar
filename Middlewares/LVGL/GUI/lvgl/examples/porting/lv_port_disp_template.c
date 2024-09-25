@@ -112,10 +112,11 @@ void lv_port_disp_init(void)
     /* 单缓冲区示例) */
     static lv_disp_draw_buf_t draw_buf_dsc_1;
 #if USE_SRAM
-    static lv_color_t buf_1 = mymalloc(SRAMEX, MY_DISP_HOR_RES * MY_DISP_VER_RES);              /* 设置缓冲区的大小为屏幕的全尺寸大小 */
+    static lv_color_t buf_1[MY_DISP_HOR_RES * MY_DISP_VER_RES]; 
+    //static lv_color_t buf_1 = mymalloc(SRAMEX, MY_DISP_HOR_RES * MY_DISP_VER_RES);              /* 设置缓冲区的大小为屏幕的全尺寸大小 */
     lv_disp_draw_buf_init(&draw_buf_dsc_1, buf_1, NULL, MY_DISP_HOR_RES * MY_DISP_VER_RES);     /* 初始化显示缓冲区 */
 #else
-    static lv_color_t buf_1[MY_DISP_HOR_RES * 10];                                              /* 设置缓冲区的大小为 10 行屏幕的大小 */
+    static lv_color_t buf_1[MY_DISP_HOR_RES * 20];                                              /* 设置缓冲区的大小为 10 行屏幕的大小 */
     lv_disp_draw_buf_init(&draw_buf_dsc_1, buf_1, NULL, MY_DISP_HOR_RES * 10);                  /* 初始化显示缓冲区 */
 #endif
 
@@ -177,7 +178,18 @@ static void disp_init(void)
 {
     /*You code here*/
     lcd_init();         /* 初始化LCD */
-    lcd_display_dir(1); /* 设置横屏 */
+    //lcd_display_dir(0); /* 设置横屏 */
+    int y, x;
+    // 直接绘制红色矩形，不设置绘制区域
+    for (y = 50; y <= 100; y++) {
+        for (x = 10; x <= 150; x++) {
+            lcd_draw_point(x, y, RED);  // 绘制红色像素
+        }
+    }
+    lcd_draw_line(x - 12, y + 3, x + 13, y + 3, YELLOW); /* 横线 */
+    lcd_show_string(2, 2, 220, 100, 16, "TP_REMIND12345abcdefg", GREEN); /* 显示提示信息 */
+
+    lcd_draw_circle(x, y, 6, CYAN);            /* 画中心圈 */
 }
 
 /**

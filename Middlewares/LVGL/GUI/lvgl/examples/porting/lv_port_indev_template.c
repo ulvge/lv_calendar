@@ -210,7 +210,6 @@ static void touchpad_init(void)
     /* 电阻屏坐标矫正 */
     if (key_scan(0) == KEY0_PRES)           /* KEY0按下,则执行校准程序 */
     {
-        lcd_clear(WHITE);                   /* 清屏 */
         tp_adjust();                        /* 屏幕校准 */
         tp_save_adjust_data();
     }

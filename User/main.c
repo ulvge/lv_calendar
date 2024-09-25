@@ -37,7 +37,7 @@ int main(void)
     delay_init(72);                     /* 延时初始化 */
     usart_init(115200);                 /* 串口初始化为115200 */
     led_init();                         /* 初始化LED */
-    lcd_init();                         /* 初始化LCD */
+    //lcd_init();                         /* 初始化LCD */
     key_init();                         /* 初始化按键 */
     //sram_init();                        /* SRAM初始化 */
     //tp_dev.init();                      /* 触摸屏初始化 */
