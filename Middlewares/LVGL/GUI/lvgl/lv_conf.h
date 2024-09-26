@@ -217,7 +217,7 @@
     *LV_LOG_LEVEL_ERROR       只有在系统可能出现故障时才会出现关键问题
     *LV_LOG_LEVEL_USER        仅用户自己添加的日志
     *LV_LOG_LEVEL_NONE        不要记录任何内容*/
-    #define LV_LOG_LEVEL        LV_LOG_LEVEL_INFO
+    #define LV_LOG_LEVEL        LV_LOG_LEVEL_ERROR
 
     /*1: 使用'printf'打印日志;
      *0: 用户需要用' lv_log_register_print_cb() '注册回调函数 */

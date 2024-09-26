@@ -201,7 +201,7 @@ static void tp_read_xy(uint16_t *x, uint16_t *y)
  * @brief       连续读取2次触摸IC数据, 并滤波
  *   @note      连续2次读取触摸屏IC,且这两次的偏差不能超过ERR_RANGE,满足
  *              条件,则认为读数正确,否则读数错误.该函数能大大提高准确度.
- *
+ *              坐标原点，在 jtag 座子边上
  * @param       x,y: 读取到的坐标值
  * @retval      0, 失败; 1, 成功;
  */
@@ -271,30 +271,34 @@ void tp_draw_big_point(uint16_t x, uint16_t y, uint16_t color)
  */
 uint8_t tp_scan(uint8_t mode)
 {
-    if (T_PEN == 0)     /* 有按键按下 */
+    uint16_t x, y;
+    if (T_PEN == 0) /* 有按键按下 */
     {
         if (mode)       /* 读取物理坐标, 无需转换 */
         {
             tp_read_xy2(&tp_dev.x[0], &tp_dev.y[0]);
         }
-        else if (tp_read_xy2(&tp_dev.x[0], &tp_dev.y[0]))     /* 读取屏幕坐标, 需要转换 */
+        else if (tp_read_xy2(&x, &y))     /* 读取屏幕坐标, 需要转换 */
         {
-            /* 将X轴 物理坐标转换成逻辑坐标(即对应LCD屏幕上面的X坐标值) */
-            tp_dev.x[0] = (signed short)(tp_dev.x[0] - tp_dev.xc) / tp_dev.xfac + lcddev.width / 2;
+            // /* 将X轴 物理坐标转换成逻辑坐标(即对应LCD屏幕上面的X坐标值) */
+            // tp_dev.x[0] = (signed short)(tp_dev.xc - x) / tp_dev.xfac + lcddev.width / 2;
 
+            // /* 将Y轴 物理坐标转换成逻辑坐标(即对应LCD屏幕上面的Y坐标值) */
+            // tp_dev.y[0] = (signed short)(tp_dev.yc - y) / tp_dev.yfac + lcddev.height / 2;
+            /* 将X轴 物理坐标转换成逻辑坐标(即对应LCD屏幕上面的X坐标值) */
+            tp_dev.x[0] = (signed short)(tp_dev.yc - y) / tp_dev.xfac + lcddev.width / 2;
             /* 将Y轴 物理坐标转换成逻辑坐标(即对应LCD屏幕上面的Y坐标值) */
-            tp_dev.y[0] = (signed short)(tp_dev.y[0] - tp_dev.yc) / tp_dev.yfac + lcddev.height / 2;
+            tp_dev.y[0] = (signed short)(tp_dev.xc - x) / tp_dev.yfac + lcddev.height / 2;
+            //printf("get touch X:%-8d Y:%-8d; covert x=%-8d, y=%-8d, \r\n", x, y, tp_dev.x[0], tp_dev.y[0]);
         }
 
         if ((tp_dev.sta & TP_PRES_DOWN) == 0)   /* 之前没有被按下 */
         {
             tp_dev.sta = TP_PRES_DOWN | TP_CATH_PRES;   /* 按键按下 */
-            tp_dev.x[CT_MAX_TOUCH - 1] = tp_dev.x[0];   /* 记录第一次按下时的坐标 */
-            tp_dev.y[CT_MAX_TOUCH - 1] = tp_dev.y[0];
+            tp_dev.x[CT_MAX_TOUCH - 1] = x;   /* 记录第一次按下时的坐标 */
+            tp_dev.y[CT_MAX_TOUCH - 1] = y;
         }
-    }
-    else
-    {
+    } else {
         if (tp_dev.sta & TP_PRES_DOWN)      /* 之前是被按下的 */
         {
             tp_dev.sta &= ~TP_PRES_DOWN;    /* 标记按键松开 */
@@ -411,7 +415,7 @@ bool tp_adjust(void)
     #define TP_ADJUST_TIMEOUT  10000
     uint16_t pxy[5][2];     /* 物理坐标缓存值 */
     uint8_t  cnt = 0;
-    uint16_t s1, s2, s3, s4;   /* 4个点的坐标差值 */
+    short top_x, right_y, bottom_x, left_y;   /* 4个点的坐标差值 */
     double px, py;          /* X,Y轴物理坐标比例,用于判定是否校准成功 */
     uint16_t outtime = 0;
     cnt = 0;
@@ -424,7 +428,7 @@ bool tp_adjust(void)
 
     while (1)               /* 如果连续10秒钟没有按下,则自动退出 */
     {
-        tp_dev.scan(1);     /* 扫描物理坐标 */
+        tp_dev.tp_scan(1);     /* 扫描物理坐标 */
 
         if ((tp_dev.sta & 0xc000) == TP_CATH_PRES)   /* 按键按下了一次(此时按键松开了.) */
         {
@@ -458,16 +462,28 @@ bool tp_adjust(void)
                     break;
 
                 case 5:     
-                // 和屏蔽的方向 不一样，应该足够小
-                    s1 = abs(pxy[1][0] - pxy[0][0]); /* 第2个点和第1个点的x轴物理坐标差值(ad值) */
-                    s3 = abs(pxy[3][0] - pxy[2][0]); /* 第4个点和第3个点的x轴物理坐标差值(ad值) */
-                    s2 = abs(pxy[3][1] - pxy[1][1]); /* 第4个点和第2个点的y轴物理坐标差值(ad值) */
-                    s4 = abs(pxy[2][1] - pxy[0][1]); /* 第3个点和第1个点的y轴物理坐标差值(ad值) */
-
+                // 和屏幕的方向 不一样。
+                    #if 0
+                    // top_x = pxy[1][0] >= pxy[0][0] ? pxy[1][0] - pxy[0][0] : pxy[0][0] - pxy[1][0]; /* 第2个点和第1个点的x轴物理坐标差值(ad值) */
+                    // bottom_x = pxy[3][0] >= pxy[2][0] ? pxy[3][0] - pxy[2][0] : pxy[2][0] - pxy[3][0]; /* 第4个点和第3个点的x轴物理坐标差值(ad值) */
+                    // right_y = pxy[3][1] >= pxy[1][1] ? pxy[3][1] - pxy[1][1] : pxy[1][1] - pxy[3][1]; /* 第4个点和第2个点的y轴物理坐标差值(ad值) */
+                    // left_y = pxy[2][1] >= pxy[0][1] ? pxy[2][1] - pxy[0][1] : pxy[0][1] - pxy[2][1]; /* 第3个点和第1个点的y轴物理坐标差值(ad值) */
+                    
                     #define TP_TOUTCH_ABS_OFFSET_TOLERANCE 120
-                    if (s1 >  TP_TOUTCH_ABS_OFFSET_TOLERANCE || s2 > TP_TOUTCH_ABS_OFFSET_TOLERANCE || 
-                        s3 >  TP_TOUTCH_ABS_OFFSET_TOLERANCE || s4 > TP_TOUTCH_ABS_OFFSET_TOLERANCE
+                    if (top_x >  TP_TOUTCH_ABS_OFFSET_TOLERANCE || right_y > TP_TOUTCH_ABS_OFFSET_TOLERANCE || 
+                        bottom_x >  TP_TOUTCH_ABS_OFFSET_TOLERANCE || left_y > TP_TOUTCH_ABS_OFFSET_TOLERANCE
                        )/* 差值不合格, 等于0 */
+                    #else
+                    top_x = pxy[1][1] >= pxy[0][1] ? pxy[1][1] - pxy[0][1] : pxy[0][1] - pxy[1][1]; /* 第2个点和第1个点的x轴物理坐标差值(ad值) */
+                    bottom_x = pxy[3][1] >= pxy[2][1] ? pxy[3][1] - pxy[2][1] : pxy[2][1] - pxy[3][1]; /* 第4个点和第3个点的x轴物理坐标差值(ad值) */
+                    right_y = pxy[3][0] >= pxy[1][0] ? pxy[3][0] - pxy[1][0] : pxy[1][0] - pxy[3][0]; /* 第4个点和第2个点的y轴物理坐标差值(ad值) */
+                    left_y = pxy[2][0] >= pxy[0][0] ? pxy[2][0] - pxy[0][0] : pxy[0][0] - pxy[2][0]; /* 第3个点和第1个点的y轴物理坐标差值(ad值) */
+
+                    #define TP_TOUTCH_ABS_OFFSET_TOLERANCE 100
+                    if (top_x <  TP_TOUTCH_ABS_OFFSET_TOLERANCE || right_y < TP_TOUTCH_ABS_OFFSET_TOLERANCE || 
+                        bottom_x <  TP_TOUTCH_ABS_OFFSET_TOLERANCE || left_y < TP_TOUTCH_ABS_OFFSET_TOLERANCE
+                       )/* 差值不合格, 等于0 */
+                       #endif
                     {
                         cnt = 0;
                         tp_draw_touch_point(lcddev.width / 2, lcddev.height / 2, WHITE); /* 清除点5 */
@@ -476,8 +492,8 @@ bool tp_adjust(void)
                         continue;
                     }
 
-                    tp_dev.xfac = (float)(s1 + s3) / (2 * (lcddev.width - 40));
-                    tp_dev.yfac = (float)(s2 + s4) / (2 * (lcddev.height - 40));
+                    tp_dev.xfac = (float)(top_x + bottom_x) / (2 * (lcddev.width - 40));
+                    tp_dev.yfac = (float)(right_y + left_y) / (2 * (lcddev.height - 40));
 
                     tp_dev.xc = pxy[4][0];      /* X轴,物理中心坐标 */
                     tp_dev.yc = pxy[4][1];      /* Y轴,物理中心坐标 */
@@ -519,14 +535,14 @@ uint8_t tp_init(void)
     if (lcddev.id == 0X5510 || lcddev.id == 0X4342 || lcddev.id == 0X1018)  /* 电容触摸屏,4.3寸/10.1寸屏 */
     {
         gt9xxx_init();
-        tp_dev.scan = gt9xxx_scan;  /* 扫描函数指向GT9147触摸屏扫描 */
+        tp_dev.tp_scan = gt9xxx_scan;  /* 扫描函数指向GT9147触摸屏扫描 */
         tp_dev.touchtype |= 0X80;   /* 电容屏 */
         return 0;
     }
     else if (lcddev.id == 0X1963 || lcddev.id == 0X7084 || lcddev.id == 0X7016)     /* SSD1963 7寸屏或者 7寸800*480/1024*600 RGB屏 */
     {
         ft5206_init();
-        tp_dev.scan = ft5206_scan;  /* 扫描函数指向FT5206触摸屏扫描 */
+        tp_dev.tp_scan = ft5206_scan;  /* 扫描函数指向FT5206触摸屏扫描 */
         tp_dev.touchtype |= 0X80;   /* 电容屏 */
         return 0;
     }

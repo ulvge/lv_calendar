@@ -206,7 +206,7 @@ static void touchpad_init(void)
 {
     /*Your code comes here*/
     
-    tp_dev.init(); // tp_init
+    tp_dev.tp_init(); // tp_init
     
     /* 电阻屏坐标矫正 */
     KeyPressedDurationMs(&g_key1);
@@ -254,7 +254,7 @@ static void touchpad_read(lv_indev_drv_t * indev_drv, lv_indev_data_t * data)
 static bool touchpad_is_pressed(void)
 {
     /*Your code comes here*/
-    tp_dev.scan(0);
+    tp_dev.tp_scan(0);
 
     if (tp_dev.sta & TP_PRES_DOWN)
     {
@@ -289,7 +289,7 @@ static void touchpad_get_xy(lv_coord_t * x, lv_coord_t * y)
 //static void mouse_init(void)
 //{
 //    /*Your code comes here*/
-//    tp_dev.init();
+//    tp_dev.tp_init();
 //    /* 电阻屏如果发现显示屏XY镜像现象，需要坐标矫正 */
 //    if (0 == (tp_dev.touchtype & 0x80))
 //    {
@@ -325,7 +325,7 @@ static void touchpad_get_xy(lv_coord_t * x, lv_coord_t * y)
 //static bool mouse_is_pressed(void)
 //{
 //    /*Your code comes here*/
-//    tp_dev.scan(0);
+//    tp_dev.tp_scan(0);
 //    
 //    if (tp_dev.sta & TP_PRES_DOWN)
 //    {

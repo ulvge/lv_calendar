@@ -86,8 +86,8 @@
 /* 触摸屏控制器 */
 typedef struct
 {
-    uint8_t (*init)(void);      /* 初始化触摸屏控制器 */
-    uint8_t (*scan)(uint8_t);   /* 扫描触摸屏.0,屏幕扫描;1,物理坐标; */
+    uint8_t (*tp_init)(void);      /* 初始化触摸屏控制器 */
+    uint8_t (*tp_scan)(uint8_t);   /* 扫描触摸屏.0,屏幕扫描;1,物理坐标; */
     bool (*adjust)(void);       /* 触摸屏校准 */
     uint16_t x[CT_MAX_TOUCH];   /* 当前坐标 */
     uint16_t y[CT_MAX_TOUCH];   /* 电容屏有最多10组坐标,电阻屏则用x[0],y[0]代表:此次扫描时,触屏的坐标,用

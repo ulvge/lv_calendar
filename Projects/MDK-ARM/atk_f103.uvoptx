@@ -162,25 +162,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>215</LineNumber>
+          <LineNumber>483</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134440946</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>E:\3Proj\10 NS208\閲庣伀\LVGL\lvgl-code-repository\鎴樿埌V4 STM32F103寮€鍙戞澘\4锛孡VGL渚嬬▼\LVGL渚嬬▼25 lv_calendar(鏃ュ巻)\Middlewares\LVGL\GUI\lvgl\examples\porting\lv_port_indev_template.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\atk_f103\../../Middlewares/LVGL/GUI/lvgl/examples/porting/lv_port_indev_template.c\215</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>473</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134441466</Address>
+          <Address>134434118</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -189,60 +173,19 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>E:\3Proj\10 NS208\閲庣伀\LVGL\lvgl-code-repository\鎴樿埌V4 STM32F103寮€鍙戞澘\4锛孡VGL渚嬬▼\LVGL渚嬬▼25 lv_calendar(鏃ュ巻)\Drivers\BSP\TOUCH\touch.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\atk_f103\../../Drivers/BSP/TOUCH/touch.c\473</Expression>
-        </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
-          <LineNumber>472</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>0</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>..\..\Drivers\BSP\TOUCH\touch.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
+          <Expression>\\atk_f103\../../Drivers/BSP/TOUCH/touch.c\483</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>lcddev</ItemText>
+          <ItemText>tp_dev</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>outtime,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>2</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>lcddev.width,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>3</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>lcddev.height,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>4</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>temp</ItemText>
-        </Ww>
-        <Ww>
-          <count>5</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>lcddev.height</ItemText>
-        </Ww>
-        <Ww>
-          <count>6</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>pxy,0x0A</ItemText>
+          <ItemText>pxy</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>
