@@ -162,9 +162,41 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
+          <LineNumber>134</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>..\..\Middlewares\LVGL\GUI\lvgl\src\extra\widgets\calendar\lv_calendar_header_dropdown.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>122</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>..\..\Middlewares\LVGL\GUI\lvgl\src\extra\widgets\calendar\lv_calendar_header_dropdown.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
           <LineNumber>483</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134434118</Address>
+          <Address>134435954</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -175,17 +207,74 @@
           <ExecCommand></ExecCommand>
           <Expression>\\atk_f103\../../Drivers/BSP/TOUCH/touch.c\483</Expression>
         </Bp>
+        <Bp>
+          <Number>3</Number>
+          <Type>0</Type>
+          <LineNumber>122</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134445350</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>E:\3Proj\10 NS208\閲庣伀\LVGL\lvgl-code-repository\鎴樿埌V4 STM32F103寮€鍙戞澘\4锛孡VGL渚嬬▼\LVGL渚嬬▼25 lv_calendar(鏃ュ巻)\Middlewares\LVGL\GUI\lvgl\src\extra\widgets\calendar\lv_calendar_header_dropdown.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\atk_f103\../../Middlewares/LVGL/GUI/lvgl/src/extra/widgets/calendar/lv_calendar_header_dropdown.c\122</Expression>
+        </Bp>
+        <Bp>
+          <Number>4</Number>
+          <Type>0</Type>
+          <LineNumber>134</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134441848</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>E:\3Proj\10 NS208\閲庣伀\LVGL\lvgl-code-repository\鎴樿埌V4 STM32F103寮€鍙戞澘\4锛孡VGL渚嬬▼\LVGL渚嬬▼25 lv_calendar(鏃ュ巻)\Middlewares\LVGL\GUI\lvgl\src\extra\widgets\calendar\lv_calendar_header_dropdown.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\atk_f103\../../Middlewares/LVGL/GUI/lvgl/src/extra/widgets/calendar/lv_calendar_header_dropdown.c\134</Expression>
+        </Bp>
       </Breakpoint>
       <WatchWindow1>
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>tp_dev</ItemText>
+          <ItemText>configFirstYear,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>pxy</ItemText>
+          <ItemText>cur_date-&gt;year,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>newd.year,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>newd,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>4</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>sel,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>5</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>configFirstYear,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>highlight_days[1],0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>

@@ -76,19 +76,19 @@ static void lv_example_calendar(void)
     lv_obj_set_size(calendar, scr_act_height() * 0.85, scr_act_height()* 0.85);
     lv_obj_center(calendar);
     /* 设置日历的日期 */
-    lv_calendar_set_today_date(calendar, 2022, 4, 7);
+    lv_calendar_set_today_date(calendar, CURRENT_YEAR, CURRENT_MONTH, CURRENT_DAY);
     /* 设置日历显示的月份 */
-    lv_calendar_set_showed_date(calendar, 2022, 4);
+    lv_calendar_set_showed_date(calendar, &((lv_calendar_t *)calendar)->today);
     /* 设置日历头 */
     lv_calendar_header_dropdown_create(calendar);
 
 
-    highlight_days[0].year = 2022;  /* 设置第一个日期 */
-    highlight_days[0].month = 4;
-    highlight_days[0].day = 5;
-    highlight_days[1].year = 2022;  /* 设置第二个日期 */
-    highlight_days[1].month = 4;
-    highlight_days[1].day = 6;
+    highlight_days[0].year = CURRENT_YEAR;  /* 设置第一个日期 */
+    highlight_days[0].month = CURRENT_MONTH;
+    highlight_days[0].day = CURRENT_DAY - 1;
+    highlight_days[1].year = CURRENT_YEAR;  /* 设置第二个日期 */
+    highlight_days[1].month = CURRENT_MONTH;
+    highlight_days[1].day = CURRENT_DAY - 3;
 
     lv_calendar_set_highlighted_dates(calendar, highlight_days, 3);
     /* 更新日历参数 */
