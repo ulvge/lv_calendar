@@ -206,15 +206,15 @@ static void touchpad_init(void)
 {
     /*Your code comes here*/
     
-    lcd_show_string(2, 2, 220, 100, 16, "CCEMIND12345abcdefg", GREEN); /* 显示提示信息 */
     tp_dev.init(); // tp_init
     
-    lcd_show_string(2, 2, 220, 100, 16, "DDEMIND12345abcdefg", GREEN); /* 显示提示信息 */
-    
     /* 电阻屏坐标矫正 */
-    if (key_scan(0) == KEY0_PRES)           /* KEY0按下,则执行校准程序 */
+    KeyPressedDurationMs(&g_key1);
+    delay_ms(100);
+    KeyPressedDurationMs(&g_key1);
+    if (g_key1.isPreesed) /* KEY0按下,则强调执行校准程序 */
     {
-        tp_adjust();                        /* 屏幕校准 */
+        tp_adjust();                        /* 屏幕重新校准 */
         tp_save_adjust_data();
     }
 }

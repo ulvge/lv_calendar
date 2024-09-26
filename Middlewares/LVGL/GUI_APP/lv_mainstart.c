@@ -111,6 +111,5 @@ static void lv_example_calendar(void)
  */
 void lv_mainstart(void)
 {
-    lcd_show_string(2, 2, 220, 100, 16, "EMIND12345abcdefg", GREEN); /* 显示提示信息 */
     lv_example_calendar();
 }

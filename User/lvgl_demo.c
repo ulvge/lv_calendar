@@ -66,10 +66,8 @@ void lvgl_demo(void)
 {
     lv_init();                                          /* lvgl系统初始化 */
     lv_port_disp_init();                                /* lvgl显示接口初始化,放在lv_init()的后面 */
-    lcd_show_string(2, 2, 220, 100, 16, "AAND12345abcdefg", GREEN); /* 显示提示信息 */
     lv_port_indev_init();                               /* lvgl输入接口初始化,放在lv_init()的后面 */
 
-    lcd_show_string(2, 2, 220, 100, 16, "BBEabcdMIND12345efg", GREEN); /* 显示提示信息 */
     xTaskCreate((TaskFunction_t )start_task,            /* 任务函数 */
                 (const char*    )"start_task",          /* 任务名称 */
                 (uint16_t       )START_STK_SIZE,        /* 任务堆栈大小 */
@@ -116,7 +114,6 @@ void start_task(void *pvParameters)
  */
 void lv_demo_task(void *pvParameters)
 {
-    lcd_show_string(2, 2, 220, 100, 16, "AAEMIND12345abcdefg", GREEN); /* 显示提示信息 */
     lv_mainstart();  /* 测试的demo */
     
     while(1)
@@ -136,7 +133,7 @@ void led_task(void *pvParameters)
     while(1)
     {
         LED0_TOGGLE();
-        vTaskDelay(1000);
+        vTaskDelay(500);
     }
 }
 

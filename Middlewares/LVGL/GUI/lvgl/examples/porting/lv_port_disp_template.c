@@ -178,17 +178,17 @@ static void disp_init(void)
     /*You code here*/
     lcd_init();         /* 初始化LCD */
     //lcd_display_dir(0); /* 设置横屏 */
-    int y, x;
-    // 直接绘制红色矩形，不设置绘制区域
-    for (y = 50; y <= 100; y++) {
-        for (x = 10; x <= 150; x++) {
-            lcd_draw_point(x, y, RED);  // 绘制红色像素
-        }
-    }
-    lcd_draw_line(x - 12, y + 3, x + 13, y + 3, YELLOW); /* 横线 */
-    lcd_show_string(2, 2, 220, 100, 16, "TP_REMIND12345abcdefg", GREEN); /* 显示提示信息 */
+    // int y, x;
+    // // 直接绘制红色矩形，不设置绘制区域
+    // for (y = 50; y <= 100; y++) {
+    //     for (x = 10; x <= 150; x++) {
+    //         lcd_draw_point(x, y, RED);  // 绘制红色像素
+    //     }
+    // }
+    // lcd_draw_line(x - 12, y + 3, x + 13, y + 3, YELLOW); /* 横线 */
+    // lcd_show_string(2, 2, 220, 100, 16, "TP_REMIND12345abcdefg", GREEN); /* 显示提示信息 */
 
-    lcd_draw_circle(x, y, 6, CYAN);            /* 画中心圈 */
+    // lcd_draw_circle(x, y, 6, CYAN);            /* 画中心圈 */
 }
 
 /**

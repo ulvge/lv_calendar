@@ -4,6 +4,10 @@
         "malloc.h": "c",
         "lvgl_demo.h": "c",
         "bsp_xpt2046_lcd.h": "c",
-        "bsp_ili9341_lcd.h": "c"
+        "bsp_ili9341_lcd.h": "c",
+        "delay.h": "c",
+        "stm32f1xx.h": "c",
+        "usart.h": "c",
+        "cstdlib": "c"
     }
 }

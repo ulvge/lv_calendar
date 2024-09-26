@@ -30,6 +30,7 @@
 
 #include "stdio.h"
 #include "stdlib.h"
+#include "stdbool.h"
 #include "./BSP/LCD/lcd.h"
 #include "./BSP/TOUCH/touch.h"
 #include "./BSP/24CXX/24cxx.h"
@@ -404,17 +405,18 @@ static void tp_adjust_info_show(uint16_t xy[5][2], double px, double py)
  * @param       无
  * @retval      无
  */
-void tp_adjust(void)
+bool tp_adjust(void)
 {
+    #define TP_ADJUST_KEY_SCAN  10
+    #define TP_ADJUST_TIMEOUT  10000
     uint16_t pxy[5][2];     /* 物理坐标缓存值 */
     uint8_t  cnt = 0;
-    short s1, s2, s3, s4;   /* 4个点的坐标差值 */
+    uint16_t s1, s2, s3, s4;   /* 4个点的坐标差值 */
     double px, py;          /* X,Y轴物理坐标比例,用于判定是否校准成功 */
     uint16_t outtime = 0;
     cnt = 0;
 
     lcd_clear(WHITE);       /* 清屏 */
-    lcd_show_string(5, 5, 220, 100, 16, "123TP_REMIND12345abcdefg", RED); /* 显示提示信息 */
     lcd_show_string(10, 10, SSD_VER_RESOLUTION - 10, SSD_HOR_RESOLUTION - 10, 16, TP_REMIND_MSG_TBL, RED); /* 显示提示信息 */
     tp_draw_touch_point(20, 20, RED);   /* 画点1 */
     delay_ms(100);
@@ -455,22 +457,17 @@ void tp_adjust(void)
                     tp_draw_touch_point(lcddev.width / 2, lcddev.height / 2, RED);  /* 画点5 */
                     break;
 
-                case 5:     /* 全部5个点已经得到 */
-                    s1 = pxy[1][0] - pxy[0][0]; /* 第2个点和第1个点的X轴物理坐标差值(AD值) */
-                    s3 = pxy[3][0] - pxy[2][0]; /* 第4个点和第3个点的X轴物理坐标差值(AD值) */
-                    s2 = pxy[3][1] - pxy[1][1]; /* 第4个点和第2个点的Y轴物理坐标差值(AD值) */
-                    s4 = pxy[2][1] - pxy[0][1]; /* 第3个点和第1个点的Y轴物理坐标差值(AD值) */
+                case 5:     
+                // 和屏蔽的方向 不一样，应该足够小
+                    s1 = abs(pxy[1][0] - pxy[0][0]); /* 第2个点和第1个点的x轴物理坐标差值(ad值) */
+                    s3 = abs(pxy[3][0] - pxy[2][0]); /* 第4个点和第3个点的x轴物理坐标差值(ad值) */
+                    s2 = abs(pxy[3][1] - pxy[1][1]); /* 第4个点和第2个点的y轴物理坐标差值(ad值) */
+                    s4 = abs(pxy[2][1] - pxy[0][1]); /* 第3个点和第1个点的y轴物理坐标差值(ad值) */
 
-                    px = (double)s1 / s3;       /* X轴比例因子 */
-                    py = (double)s2 / s4;       /* Y轴比例因子 */
-
-                    if (px < 0)px = -px;        /* 负数改正数 */
-                    if (py < 0)py = -py;        /* 负数改正数 */
-
-                    if (px < 0.95 || px > 1.05 || py < 0.95 || py > 1.05 ||     /* 比例不合格 */
-                            abs(s1) > 4095 || abs(s2) > 4095 || abs(s3) > 4095 || abs(s4) > 4095 || /* 差值不合格, 大于坐标范围 */
-                            abs(s1) == 0 || abs(s2) == 0 || abs(s3) == 0 || abs(s4) == 0            /* 差值不合格, 等于0 */
-                       )
+                    #define TP_TOUTCH_ABS_OFFSET_TOLERANCE 120
+                    if (s1 >  TP_TOUTCH_ABS_OFFSET_TOLERANCE || s2 > TP_TOUTCH_ABS_OFFSET_TOLERANCE || 
+                        s3 >  TP_TOUTCH_ABS_OFFSET_TOLERANCE || s4 > TP_TOUTCH_ABS_OFFSET_TOLERANCE
+                       )/* 差值不合格, 等于0 */
                     {
                         cnt = 0;
                         tp_draw_touch_point(lcddev.width / 2, lcddev.height / 2, WHITE); /* 清除点5 */
@@ -487,24 +484,23 @@ void tp_adjust(void)
 
                     lcd_clear(WHITE);   /* 清屏 */
                     lcd_show_string(35, 110, lcddev.width, lcddev.height, 16, "Touch Screen Adjust OK!", BLUE); /* 校正完成 */
-                    delay_ms(1000);
+                    delay_ms(3000);
                     tp_save_adjust_data();
 
                     lcd_clear(WHITE);/* 清屏 */
-                    return;/* 校正完成 */
+                    return true;/* 校正完成 */
             }
         }
 
-        delay_ms(10);
+        delay_ms(TP_ADJUST_KEY_SCAN);
         outtime++;
 
-        if (outtime > 2000)
+        if (outtime > TP_ADJUST_TIMEOUT / TP_ADJUST_KEY_SCAN)
         {
-            tp_get_adjust_data();
             break;
         }
     }
-
+    return false;
 }
 
 /**
@@ -572,11 +568,9 @@ uint8_t tp_init(void)
         }
         else                    /* 未校准? */
         {
-            tp_adjust();        /* 屏幕校准 */
+            tp_adjust();        /* 屏幕首次校准 */
             tp_save_adjust_data();
         }
-
-        tp_get_adjust_data();
     }
 
     return 1;

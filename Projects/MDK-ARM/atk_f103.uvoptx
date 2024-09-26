@@ -162,9 +162,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>210</LineNumber>
+          <LineNumber>215</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134441460</Address>
+          <Address>134440946</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -173,14 +173,14 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>E:\3Proj\10 NS208\閲庣伀\LVGL\lvgl-code-repository\鎴樿埌V4 STM32F103寮€鍙戞澘\4锛孡VGL渚嬬▼\LVGL渚嬬▼25 lv_calendar(鏃ュ巻)\Middlewares\LVGL\GUI\lvgl\examples\porting\lv_port_indev_template.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\atk_f103\../../Middlewares/LVGL/GUI/lvgl/examples/porting/lv_port_indev_template.c\210</Expression>
+          <Expression>\\atk_f103\../../Middlewares/LVGL/GUI/lvgl/examples/porting/lv_port_indev_template.c\215</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>567</LineNumber>
+          <LineNumber>473</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134443622</Address>
+          <Address>134441466</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -189,7 +189,23 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>E:\3Proj\10 NS208\閲庣伀\LVGL\lvgl-code-repository\鎴樿埌V4 STM32F103寮€鍙戞澘\4锛孡VGL渚嬬▼\LVGL渚嬬▼25 lv_calendar(鏃ュ巻)\Drivers\BSP\TOUCH\touch.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\atk_f103\../../Drivers/BSP/TOUCH/touch.c\567</Expression>
+          <Expression>\\atk_f103\../../Drivers/BSP/TOUCH/touch.c\473</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>472</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>..\..\Drivers\BSP\TOUCH\touch.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -223,6 +239,11 @@
           <WinNumber>1</WinNumber>
           <ItemText>lcddev.height</ItemText>
         </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>pxy,0x0A</ItemText>
+        </Ww>
       </WatchWindow1>
       <MemoryWindow1>
         <Mm>
@@ -238,7 +259,7 @@
       <DebugFlag>
         <trace>0</trace>
         <periodic>1</periodic>
-        <aLwin>1</aLwin>
+        <aLwin>0</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
         <aSer2>0</aSer2>
@@ -276,20 +297,12 @@
       <pMultCmdsp></pMultCmdsp>
       <SystemViewers>
         <Entry>
-          <Name>System Viewer\AFIO</Name>
-          <WinId>35904</WinId>
+          <Name>System Viewer\GPIOA</Name>
+          <WinId>35901</WinId>
         </Entry>
         <Entry>
           <Name>System Viewer\GPIOC</Name>
           <WinId>35902</WinId>
-        </Entry>
-        <Entry>
-          <Name>System Viewer\GPIOD</Name>
-          <WinId>35901</WinId>
-        </Entry>
-        <Entry>
-          <Name>System Viewer\RCC</Name>
-          <WinId>35903</WinId>
         </Entry>
       </SystemViewers>
       <DebugDescription>
@@ -2900,7 +2913,7 @@
 
   <Group>
     <GroupName>Middlewares/FATFS</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
